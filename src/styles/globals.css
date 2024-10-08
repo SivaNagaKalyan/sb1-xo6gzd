@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=VT323&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 255, 255, 255;
+  --background-end-rgb: 255, 255, 255;
+}
+
+.dark {
+  --foreground-rgb: 0, 255, 0;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer base {
+  body {
+    @apply text-lg md:text-xl font-normal;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .dark body {
+    font-family: 'VT323', monospace;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+.nav-link {
+  @apply hover:bg-gray-100 dark:hover:bg-green-900 transition-colors duration-200 text-lg md:text-xl font-medium py-1 px-2 rounded-md text-gray-700 dark:text-green-400;
+}
+
+.btn {
+  @apply px-4 py-2 rounded border border-blue-500 hover:bg-blue-500 hover:text-white transition-colors duration-200 dark:border-green-400 dark:hover:bg-green-400 dark:hover:text-black;
+}
+
+.footer-link {
+  @apply hover:text-blue-500 dark:hover:text-green-300 transition-colors duration-200;
+}
+
+.company-slider {
+  @apply flex overflow-x-hidden space-x-8 py-4;
+  white-space: nowrap;
+}
+
+.company-slider-inner {
+  display: inline-block;
+  animation: slide 60s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.company-item {
+  @apply inline-flex items-center space-x-2;
+}
+
+.company-logo {
+  @apply w-8 h-8 object-contain;
+}
